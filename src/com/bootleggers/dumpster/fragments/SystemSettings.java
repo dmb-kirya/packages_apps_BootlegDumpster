@@ -34,6 +34,7 @@ import androidx.preference.PreferenceScreen;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 import android.provider.Settings;
 
+import com.bootleggers.dumpster.fragments.SmartPixels;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto;
@@ -42,11 +43,20 @@ import com.android.settings.R;
 public class SystemSettings extends SettingsPreferenceFragment 
         implements OnPreferenceChangeListener {
 
+    private static final String SMART_PIXELS = "smart_pixels";
+
+    private Preference mSmartPixels;
+
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.bootleg_dumpster_frag_system);
 
+        mSmartPixels = (Preference) findPreference(SMART_PIXELS);
+        boolean mSmartPixelsSupported = getResources().getBoolean(
+                com.android.internal.R.bool.config_supportSmartPixels);
+        if (!mSmartPixelsSupported)
+            prefSet.removePreference(mSmartPixels);
     }
 
     @Override
