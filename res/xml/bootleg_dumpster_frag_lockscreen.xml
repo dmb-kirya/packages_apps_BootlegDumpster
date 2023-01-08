@@ -30,4 +30,10 @@
         android:summary="@string/lockscreen_charging_info_summary"
         android:defaultValue="1" />
 
+    <com.bootleggers.support.preferences.SystemSettingSwitchPreference
+        android:key="disable_ripple_effect"
+        android:title="@string/disable_fingerprint_ripple_effect_title"
+        android:summary="@string/disable_fingerprint_ripple_effect_summary"
+        android:defaultValue="false" />
+
 </PreferenceScreen>
